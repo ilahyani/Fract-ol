@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 13:34:48 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/21 15:53:48 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/24 18:50:26 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 #include "mlx.h"
 #include <stdio.h>
+
+typedef struct	s_complex
+{
+	double	re;
+	double	im;
+}	t_complex;
 
 typedef struct s_vector
 {
@@ -31,5 +37,8 @@ typedef struct	s_image
 	int       line_size;
 	int       endian;
 }   t_image;
+
+void	my_mlx_pixel_put(t_image *data, int x, int y, int color);
+void	manderlbrot(t_image *img);
 
 # endif

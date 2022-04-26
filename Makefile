@@ -1,5 +1,9 @@
+SRCS	=	main.c\
+			Mandelbrot.c\
+			utils.c
+
 all:  
-		gcc -Wall -Wextra -Werror -lmlx -framework OpenGL -framework Appkit main.c -o fractol
+		gcc -Wall -Wextra -Werror -lmlx -framework OpenGL -framework Appkit $(SRCS) -o fractol
 
 clean:	
 		rm -rf fractol
