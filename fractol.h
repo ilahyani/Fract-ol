@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 13:34:48 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/27 18:58:01 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/27 22:14:26 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct vars
 	void	*window;
 	t_image img;
 	t_complex	c;
+	t_vector	coordinates;
 }	t_vars;
 
 

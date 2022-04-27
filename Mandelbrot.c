@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 18:47:47 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/27 19:14:23 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/27 22:15:09 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,37 @@
 
 int	manderlbrot(t_vars *vars)
 {
-	t_vector	coordinates;
 	t_complex	z_squared;
 	t_complex	z;
 	t_complex	c;
+	int			i = 0;
 	
-	coordinates.y = 0;
-	while (coordinates.y <= 500)
+	vars->coordinates.y = 0;
+	while (vars->coordinates.y <= 500)
 	{
-		coordinates.x = 0;
-		while (coordinates.x <= 500)
+		vars->coordinates.x = 0;
+		while (vars->coordinates.x <= 500)
 		{
-			vars->itr = 0;
-			z.re = (coordinates.x / 500) * (vars->max_re - vars->min_re) + vars->min_re;
-			z.im = (coordinates.y / 500) * (vars->max_im - vars->min_im) + vars->min_im;
+			z.re = (vars->coordinates.x / 500) * (vars->max_re - vars->min_re) + vars->min_re;
+			z.im = (vars->coordinates.y / 500) * (vars->max_im - vars->min_im) + vars->min_im;
 			c.re = z.re;
+			i = 0;
 			c.im = z.im;
-			while (vars->itr < 200 && z.re * z.re + z.im * z.im < 4)
+			while (i < vars->itr && z.re * z.re + z.im * z.im < 4)
 			{
 				z_squared.re = z.re * z.re - z.im * z.im;
 				z_squared.im = 2 * z.re * z.im;
 				z.re =  z_squared.re + c.re;
 				z.im = z_squared.im + c.im;
-				vars->itr++;
+				i++;
 			}
-			if (vars->itr == 200)
-				my_mlx_pixel_put(&vars->img, coordinates.x, coordinates.y, create_trgb(0, 0, 0, 0));
+			if (i == 200)
+				my_mlx_pixel_put(&vars->img, vars->coordinates.x, vars->coordinates.y, 0);
 			else
-				my_mlx_pixel_put(&vars->img, coordinates.x, coordinates.y,  create_trgb(1, vars->itr, 1, vars->itr));
-			coordinates.x++;
+				my_mlx_pixel_put(&vars->img, vars->coordinates.x, vars->coordinates.y,  create_trgb(1, 3, i, i));
+			vars->coordinates.x++;
 		}
-		coordinates.y++;
+		vars->coordinates.y++;
 	}
 	mlx_put_image_to_window(vars->mlx_pointer, vars->window, vars->img.pointer, 0, 0);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 18:49:17 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/27 19:00:49 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/27 22:11:40 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 // 	vars.min_im = -2;
 // 	vars.max_re = 2;
 // 	vars.min_re = -2;
+// 	vars.itr = 200;
 // 	vars.mlx_pointer = mlx_init();
 // 	vars.window = mlx_new_window(vars.mlx_pointer, 500, 500, "Mandelbrot");
 // 	vars.img.pointer = mlx_new_image(vars.mlx_pointer, 500, 500);
@@ -41,6 +42,7 @@ int	main(void)
 	vars.min_im = -2;
 	vars.max_re = 2;
 	vars.min_re = -2;
+	vars.itr = 200;
 	vars.mlx_pointer = mlx_init();
 	vars.window = mlx_new_window(vars.mlx_pointer, 500, 500, "Mandelbrot");
 	vars.img.pointer = mlx_new_image(vars.mlx_pointer, 500, 500);
