@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 18:48:55 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/27 22:17:58 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/27 22:20:45 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@ int		mouse_mvmnt(int x, int y, t_vars *vars)
 {
 	vars->c.re = x / (500 / (vars->max_re - vars->min_re)) + vars->min_re;
 	vars->c.im = y / (500 / (vars->max_im - vars->min_im)) + vars->min_im;
-	// (void)params;
-	// (void)x;
-	// (void)y;
-	//ft_printf("(%d, %d)\n", x, y);
 	return (0);
 }
 
