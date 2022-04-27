@@ -1,6 +1,7 @@
 SRCS	=	main.c\
 			Mandelbrot.c\
-			utils.c
+			utils.c\
+			Julia.c
 
 LIBFT = ./libft
 

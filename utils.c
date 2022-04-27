@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 18:48:55 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/27 10:30:21 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/27 19:01:42 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ void	my_mlx_pixel_put(t_image *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int		mouse_mvmnt(int x, int y, void *params)
+int		mouse_mvmnt(int x, int y, t_vars *vars)
 {
-	(void)params;
-	(void)x;
-	(void)y;
+	vars->c.re = x / (500 / (vars->max_re - vars->min_re)) + vars->min_re;
+	vars->c.im = y / (500 / (vars->max_im - vars->min_im)) + vars->min_im;
+	// (void)params;
+	// (void)x;
+	// (void)y;
 	//ft_printf("(%d, %d)\n", x, y);
 	return (0);
 }
@@ -34,14 +36,13 @@ int	ft_zoom(int	x, int y, int keycode, t_vars *vars)
 	double	k;
 	t_complex	mouse;
 
-	ft_printf("Zoooming\n");
 	if (keycode == 4)
-		k = 1.30;
-	else
 	{
+		k = 1.5;
 		vars->itr += 5;
-		k = 0.70;
 	}
+	else
+		k = 0.6;
 	mouse.re = x / (500 / (vars->max_re - vars->min_re)) + vars->min_re;
 	mouse.im = y / (500 / (vars->max_im - vars->min_im)) + vars->min_im;
 	vars->min_re = mouse.re + (vars->min_re - mouse.re) * k;
@@ -73,4 +74,9 @@ int escape(int keycode, void *param)
     	exit(0);
 	}
 	return (0);
+}
+
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
 }

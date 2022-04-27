@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Mandelbrot.c                                       :+:      :+:    :+:   */
+/*   Julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/24 18:47:47 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/27 19:13:06 by ilahyani         ###   ########.fr       */
+/*   Created: 2022/04/27 10:39:42 by ilahyani          #+#    #+#             */
+/*   Updated: 2022/04/27 19:11:30 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	manderlbrot(t_vars *vars)
+int	Julia(t_vars *vars)
 {
 	t_vector	coordinates;
 	t_complex	z_squared;
 	t_complex	z;
-	
+
 	coordinates.y = 0;
 	while (coordinates.y <= 500)
 	{
@@ -27,8 +27,6 @@ int	manderlbrot(t_vars *vars)
 			vars->itr = 0;
 			z.re = (coordinates.x / 500) * (vars->max_re - vars->min_re) + vars->min_re;
 			z.im = (coordinates.y / 500) * (vars->max_im - vars->min_im) + vars->min_im;
-			vars->c.re = z.re;
-			vars->c.im = z.im;
 			while (vars->itr < 200 && z.re * z.re + z.im * z.im < 4)
 			{
 				z_squared.re = z.re * z.re - z.im * z.im;
@@ -38,9 +36,9 @@ int	manderlbrot(t_vars *vars)
 				vars->itr++;
 			}
 			if (vars->itr == 200)
-				my_mlx_pixel_put(&vars->img, coordinates.x, coordinates.y, create_trgb(0, 0, 0, 0));
+				my_mlx_pixel_put(&vars->img, coordinates.x, coordinates.y, 0xFFFFFF * vars->c.re);
 			else
-				my_mlx_pixel_put(&vars->img, coordinates.x, coordinates.y,  create_trgb(1, vars->itr, vars->itr*2, vars->itr*3));
+				my_mlx_pixel_put(&vars->img, coordinates.x, coordinates.y, 0x0000ff * vars->itr);
 			coordinates.x++;
 		}
 		coordinates.y++;

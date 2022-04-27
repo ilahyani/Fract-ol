@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 13:34:48 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/27 10:28:55 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/27 18:58:01 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "./libft/libft.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 typedef struct s_vector
 {
@@ -34,6 +35,13 @@ typedef struct	s_image
 	int       endian;
 }   t_image;
 
+
+typedef struct	s_complex
+{
+	double	re;
+	double	im;
+}	t_complex;
+
 typedef struct vars
 {
 	double	min_re;
@@ -44,22 +52,18 @@ typedef struct vars
 	void	*mlx_pointer;
 	void	*window;
 	t_image img;
+	t_complex	c;
 }	t_vars;
-
-
-typedef struct	s_complex
-{
-	double	re;
-	double	im;
-}	t_complex;
 
 
 void	my_mlx_pixel_put(t_image *data, int x, int y, int color);
 int		manderlbrot(t_vars *vars);
-int		mouse_mvmnt(int x, int y, void *params);
+int		Julia(t_vars *vars);
+int		mouse_mvmnt(int x, int y, t_vars *vars);
 int		ft_zoom(int	x, int y, int keycode, t_vars *vars);
 int		mouse_hook(int keycode, int x, int y, t_vars *vars);
 int 	close_window(void *param);
 int 	escape(int keycode, void *param);
+int		create_trgb(int t, int r, int g, int b);
 
 # endif
