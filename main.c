@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 18:49:17 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/25 23:04:23 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/27 10:30:45 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,21 @@
 
 int	main(void)
 {
-	void	*mlx_pointer;
-	void	*window;
-	t_image img;
+	t_vars	vars;
 	
-	mlx_pointer = mlx_init();
-	window = mlx_new_window(mlx_pointer, 500, 500, "Mandelbrot");
-	img.pointer = mlx_new_image(mlx_pointer, 500, 500);
-	img.pixels = mlx_get_data_addr(img.pointer, &img.bits_per_pixel, &img.line_size, &img.endian);
-	manderlbrot(&img);
-	mlx_put_image_to_window(mlx_pointer, window, img.pointer, 0, 0);
-	mlx_loop(mlx_pointer);
+	vars.max_im = 2;
+	vars.min_im = -2;
+	vars.max_re = 2;
+	vars.min_re = -2;
+	vars.mlx_pointer = mlx_init();
+	vars.window = mlx_new_window(vars.mlx_pointer, 500, 500, "Mandelbrot");
+	vars.img.pointer = mlx_new_image(vars.mlx_pointer, 500, 500);
+	vars.img.pixels = mlx_get_data_addr(vars.img.pointer, &vars.img.bits_per_pixel, &vars.img.line_size, &vars.img.endian);
+	manderlbrot(&vars);
+	mlx_hook(vars.window, 6, 0, mouse_mvmnt, &vars);
+	mlx_mouse_hook(vars.window, mouse_hook, &vars);
+	mlx_hook(vars.window, 17, 0, close_window, &vars);
+	mlx_hook(vars.window, 2, 0, escape, &vars);
+	mlx_loop_hook(vars.mlx_pointer, manderlbrot, &vars);
+	mlx_loop(vars.mlx_pointer);
 }

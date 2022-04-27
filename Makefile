@@ -2,13 +2,20 @@ SRCS	=	main.c\
 			Mandelbrot.c\
 			utils.c
 
-all:  
-		gcc -Wall -Wextra -Werror -lmlx -framework OpenGL -framework Appkit $(SRCS) -o fractol
+LIBFT = ./libft
+
+LIB = ./libft/libft.a
+
+all:  $(LIB)
+		gcc -Wall -Wextra -Werror -lmlx -framework OpenGL -framework Appkit $(SRCS) $(LIB) -o fractol
+
+$(LIB):
+			Make -C $(LIBFT)
 
 clean:	
-		rm -rf fractol
+		rm -rf fractol $(LIBFT)/*.o $(LIBFT)/ft_printf/*.o
 
 fclean:	clean
-		rm -rf *.o
+		rm -rf *.o $(LIB)
 
 re:	fclean all

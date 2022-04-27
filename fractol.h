@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 13:34:48 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/24 18:50:26 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/27 10:28:55 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 # define FRACTOL_H
 
 #include "mlx.h"
+#include "./libft/libft.h"
 #include <stdio.h>
-
-typedef struct	s_complex
-{
-	double	re;
-	double	im;
-}	t_complex;
+#include <stdlib.h>
 
 typedef struct s_vector
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }	t_vector;
 
 typedef struct	s_image
@@ -38,7 +34,32 @@ typedef struct	s_image
 	int       endian;
 }   t_image;
 
+typedef struct vars
+{
+	double	min_re;
+	double	min_im;
+	double	max_re;
+	double	max_im;
+	int		itr;
+	void	*mlx_pointer;
+	void	*window;
+	t_image img;
+}	t_vars;
+
+
+typedef struct	s_complex
+{
+	double	re;
+	double	im;
+}	t_complex;
+
+
 void	my_mlx_pixel_put(t_image *data, int x, int y, int color);
-void	manderlbrot(t_image *img);
+int		manderlbrot(t_vars *vars);
+int		mouse_mvmnt(int x, int y, void *params);
+int		ft_zoom(int	x, int y, int keycode, t_vars *vars);
+int		mouse_hook(int keycode, int x, int y, t_vars *vars);
+int 	close_window(void *param);
+int 	escape(int keycode, void *param);
 
 # endif
