@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 13:34:48 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/27 22:14:26 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/28 06:46:36 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,13 @@ typedef struct vars
 void	my_mlx_pixel_put(t_image *data, int x, int y, int color);
 int		manderlbrot(t_vars *vars);
 int		Julia(t_vars *vars);
+int		multibrot(t_vars *vars);
 int		mouse_mvmnt(int x, int y, t_vars *vars);
 int		ft_zoom(int	x, int y, int keycode, t_vars *vars);
 int		mouse_hook(int keycode, int x, int y, t_vars *vars);
 int 	close_window(void *param);
 int 	escape(int keycode, void *param);
 int		create_trgb(int t, int r, int g, int b);
+void	ft_init(t_vars *vars);
 
 # endif

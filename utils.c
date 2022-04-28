@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 18:48:55 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/27 22:20:45 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/28 06:34:38 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	ft_zoom(int	x, int y, int keycode, t_vars *vars)
 
 	if (keycode == 4)
 	{
-		k = 1.2;
+		k = 1.1;
 		vars->itr += 5;
 	}
 	else
-		k = 0.8;
+		k = 0.9;
 	mouse.re = x / (500 / (vars->max_re - vars->min_re)) + vars->min_re;
 	mouse.im = y / (500 / (vars->max_im - vars->min_im)) + vars->min_im;
 	vars->min_re = mouse.re + (vars->min_re - mouse.re) * k;
@@ -75,4 +75,19 @@ int escape(int keycode, void *param)
 int	create_trgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+void	ft_init(t_vars *vars)
+{
+	vars->c.re = - 0.7269;
+	vars->c.im = 0.1889;
+	vars->max_im = 2;
+	vars->min_im = -2;
+	vars->max_re = 2;
+	vars->min_re = -2;
+	vars->itr = 200;
+	vars->mlx_pointer = mlx_init();
+	vars->window = mlx_new_window(vars->mlx_pointer, 500, 500, "fractol");
+	vars->img.pointer = mlx_new_image(vars->mlx_pointer, 500, 500);
+	vars->img.pixels = mlx_get_data_addr(vars->img.pointer, &vars->img.bits_per_pixel, &vars->img.line_size, &vars->img.endian);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Mandelbrot.c                                       :+:      :+:    :+:   */
+/*   Multibrot.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/24 18:47:47 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/28 06:22:14 by ilahyani         ###   ########.fr       */
+/*   Created: 2022/04/28 06:40:07 by ilahyani          #+#    #+#             */
+/*   Updated: 2022/04/28 06:49:38 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	manderlbrot(t_vars *vars)
+int	multibrot(t_vars *vars)
 {
 	t_complex	z_squared;
 	t_complex	z;
@@ -32,14 +32,14 @@ int	manderlbrot(t_vars *vars)
 			i = 0;
 			while (i < vars->itr && z.re * z.re + z.im * z.im < 4)
 			{
-				z_squared.re = z.re * z.re - z.im * z.im;
-				z_squared.im = 2 * z.re * z.im;
+				z_squared.re = z.re * z.re * z.re - 3 * z.re * z.im * z.im;
+				z_squared.im = -1 * z.im * z.im * z.im + 3 * z.re * z.re * z.im;
 				z.re =  z_squared.re + c.re;
 				z.im = z_squared.im + c.im;
 				i++;
 			}
 			if (i == 200)
-				my_mlx_pixel_put(&vars->img, vars->coordinates.x, vars->coordinates.y, 0);
+				my_mlx_pixel_put(&vars->img, vars->coordinates.x, vars->coordinates.y, create_trgb(45, 255, 245, 154));
 			else
 				my_mlx_pixel_put(&vars->img, vars->coordinates.x, vars->coordinates.y,  create_trgb(1, 3, i, i));
 			vars->coordinates.x++;
