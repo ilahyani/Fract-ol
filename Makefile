@@ -6,14 +6,14 @@
 #    By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/27 22:30:48 by ilahyani          #+#    #+#              #
-#    Updated: 2022/04/28 15:50:18 by ilahyani         ###   ########.fr        #
+#    Updated: 2022/04/28 18:59:26 by ilahyani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	=	Mandelbrot.c\
 			Julia.c\
-			Multibrot.c\
 			utils.c\
+			utils_2.c\
 			main.c
 
 OBJS	=	$(SRCS:.c=.o)
@@ -22,6 +22,7 @@ NAME	=	fractol
 
 BNS_SRCS	=	bonus/fractol_bonus.c\
 				bonus/utils_bonus.c\
+				bonus/utils_bonus_2.c\
 				bonus/main_bonus.c
 
 BNS_OBJS = $(BNS_SRCS:.c=.o)

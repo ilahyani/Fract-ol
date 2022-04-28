@@ -6,18 +6,17 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 13:34:48 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/28 14:24:24 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/28 19:00:07 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef FRACTOL_H
+#ifndef FRACTOL_H
 # define FRACTOL_H
 
-#include "mlx.h"
-#include "./libft/libft.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
+# include "mlx.h"
+# include "./libft/libft.h"
+# include <stdlib.h>
+# include <math.h>
 
 typedef struct s_vector
 {
@@ -25,18 +24,17 @@ typedef struct s_vector
 	double	y;
 }	t_vector;
 
-typedef struct	s_image
+typedef struct s_image
 {
-	void      *pointer;
-	t_vector  size;
-	char      *pixels;
-	int       bits_per_pixel;
-	int       line_size;
-	int       endian;
-}   t_image;
+	void		*ptr;
+	t_vector	size;
+	char		*pxls;
+	int			bpp;
+	int			l_size;
+	int			endian;
+}	t_image;
 
-
-typedef struct	s_complex
+typedef struct s_complex
 {
 	double	re;
 	double	im;
@@ -44,29 +42,31 @@ typedef struct	s_complex
 
 typedef struct vars
 {
-	double		min_re;
-	double		min_im;
-	double		max_re;
-	double		max_im;
-	void		*mlx_pointer;
+	double		min_r;
+	double		min_i;
+	double		max_r;
+	double		max_i;
+	void		*mlx_ptr;
 	void		*window;
 	int			itr;
-	t_vector	coordinates;
-	t_image 	img;
+	t_vector	pnt;
+	t_image		img;
 	t_complex	c;
 }	t_vars;
 
-
 void	my_mlx_pixel_put(t_image *data, int x, int y, int color);
 int		manderlbrot(t_vars *vars);
-int		Julia(t_vars *vars);
+void	draw_mandelbrot(t_vars *vars);
+int		julia(t_vars *vars);
+void	draw_julia(t_vars *vars);
 int		multibrot(t_vars *vars);
 int		mouse_mvmnt(int x, int y, t_vars *vars);
-int		ft_zoom(int	x, int y, int keycode, t_vars *vars);
+int		ft_zoom(int x, int y, int keycode, t_vars *vars);
 int		mouse_hook(int keycode, int x, int y, t_vars *vars);
-int 	close_window(void *param);
-int 	escape(int keycode, void *param);
-int		create_trgb(int t, int r, int g, int b);
+int		close_window(void *param);
+int		escape(int keycode, void *param);
+int		trgb(int t, int r, int g, int b);
 void	ft_init(t_vars *vars);
+void	error_message(int i);
 
-# endif
+#endif
