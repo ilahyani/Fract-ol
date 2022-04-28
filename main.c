@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 06:09:13 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/28 06:52:01 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/28 06:58:50 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_vars vars;
 
 	ft_init(&vars);
-	if (argc > 1)
+	if (argc == 2)
 	{
 		if (!ft_strncmp(argv[1], "-m", 2))
 		{
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 			mlx_loop_hook(vars.mlx_pointer, Julia, &vars);
 			mlx_loop(vars.mlx_pointer);
 		}
-		if (!ft_strncmp(argv[1], "-t", 2))
+		else if (!ft_strncmp(argv[1], "-t", 2))
 		{
 			multibrot(&vars);
 			mlx_hook(vars.window, 6, 0, mouse_mvmnt, &vars);
@@ -49,8 +49,12 @@ int	main(int argc, char **argv)
 			mlx_loop_hook(vars.mlx_pointer, multibrot, &vars);
 			mlx_loop(vars.mlx_pointer);
 		}
+		else
+			ft_printf("Invalid Parameters, Please try:\n-m for Mandelbrot Set\n-j for Julia Set\n-t for Multibrot Set\n");
 	}
+	else if (argc == 1)
+		ft_printf("Missing Parameters, Please try:\n-m for Mandelbrot Set\n-j for Julia Set\n-t for Multibrot Set\n");
 	else
-		ft_printf("Missing Parameters, Please add:\n-m for Mandelbrot Set\n-j for Julia Set\n-t for Multibrot Set\n");
+		ft_printf("Invalid Parameters, Please try:\n-m for Mandelbrot Set\n-j for Julia Set\n-t for Multibrot Set\n");
 	return (0);
 }

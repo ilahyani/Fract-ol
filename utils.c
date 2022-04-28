@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 18:48:55 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/28 06:34:38 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/28 06:54:17 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@ void	my_mlx_pixel_put(t_image *data, int x, int y, int color)
 
 	dst = data->pixels + (y * data->line_size + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
-}
-
-int		mouse_mvmnt(int x, int y, t_vars *vars)
-{
-	vars->c.re = x / (500 / (vars->max_re - vars->min_re)) + vars->min_re;
-	vars->c.im = y / (500 / (vars->max_im - vars->min_im)) + vars->min_im;
-	return (0);
 }
 
 int	ft_zoom(int	x, int y, int keycode, t_vars *vars)
@@ -45,6 +38,13 @@ int	ft_zoom(int	x, int y, int keycode, t_vars *vars)
 	vars->max_re = mouse.re + (vars->max_re - mouse.re) * k;
 	vars->min_im = mouse.im + (vars->min_im - mouse.im) * k;
 	vars->max_im = mouse.im + (vars->max_im - mouse.im) * k;
+	return (0);
+}
+
+int		mouse_mvmnt(int x, int y, t_vars *vars)
+{
+	vars->c.re = x / (500 / (vars->max_re - vars->min_re)) + vars->min_re;
+	vars->c.im = y / (500 / (vars->max_im - vars->min_im)) + vars->min_im;
 	return (0);
 }
 
