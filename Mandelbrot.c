@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 18:47:47 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/28 06:22:14 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/28 15:25:17 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	manderlbrot(t_vars *vars)
 		vars->coordinates.x = 0;
 		while (vars->coordinates.x <= 500)
 		{
-			z.re = (vars->coordinates.x / 500) * (vars->max_re - vars->min_re) + vars->min_re;
-			z.im = (vars->coordinates.y / 500) * (vars->max_im - vars->min_im) + vars->min_im;
+			z.re = vars->coordinates.x / (500 / (vars->max_re - vars->min_re)) + vars->min_re;
+			z.im = vars->coordinates.y / (500 / (vars->max_im - vars->min_im)) + vars->min_im;
 			c.re = z.re;
 			c.im = z.im;
 			i = 0;
@@ -39,7 +39,7 @@ int	manderlbrot(t_vars *vars)
 				i++;
 			}
 			if (i == 200)
-				my_mlx_pixel_put(&vars->img, vars->coordinates.x, vars->coordinates.y, 0);
+				my_mlx_pixel_put(&vars->img, vars->coordinates.x, vars->coordinates.y, 0xffffff);
 			else
 				my_mlx_pixel_put(&vars->img, vars->coordinates.x, vars->coordinates.y,  create_trgb(1, 3, i, i));
 			vars->coordinates.x++;

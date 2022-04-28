@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   fractol_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/16 13:34:48 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/28 14:24:24 by ilahyani         ###   ########.fr       */
+/*   Created: 2022/04/28 15:33:55 by ilahyani          #+#    #+#             */
+/*   Updated: 2022/04/28 15:44:50 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 # define FRACTOL_H
 
 #include "mlx.h"
-#include "./libft/libft.h"
-#include <stdio.h>
+#include "../libft/libft.h"
 #include <stdlib.h>
 #include <math.h>
 
@@ -58,8 +57,6 @@ typedef struct vars
 
 
 void	my_mlx_pixel_put(t_image *data, int x, int y, int color);
-int		manderlbrot(t_vars *vars);
-int		Julia(t_vars *vars);
 int		multibrot(t_vars *vars);
 int		mouse_mvmnt(int x, int y, t_vars *vars);
 int		ft_zoom(int	x, int y, int keycode, t_vars *vars);

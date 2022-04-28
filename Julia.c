@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 10:39:42 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/28 06:22:10 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/28 14:30:49 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	Julia(t_vars *vars)
 				i++;
 			}
 			if (i == 200)
-				my_mlx_pixel_put(&vars->img, vars->coordinates.x, vars->coordinates.y,  0);
+				my_mlx_pixel_put(&vars->img, vars->coordinates.x, vars->coordinates.y, 0xffffff);
 			else
 				my_mlx_pixel_put(&vars->img, vars->coordinates.x, vars->coordinates.y,  create_trgb(1, 0, i, i * 2));
 			vars->coordinates.x++;
