@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 10:39:42 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/28 18:40:40 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/28 22:44:11 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	j_iterate(t_vars *var)
 	int			i;
 
 	i = 0;
-	z.re = (var->pnt.x / 500) * (var->max_r - var->min_r) + var->min_r;
-	z.im = (var->pnt.y / 500) * (var->max_i - var->min_i) + var->min_i;
+	z.re = var->pnt.x / (500 / (var->max_r - var->min_r)) + var->min_r;
+	z.im = var->pnt.y / (500 / (var->max_i - var->min_i)) + var->min_i;
 	while (i < var->itr && z.re * z.re + z.im * z.im < 4)
 	{
 		z_squared.re = z.re * z.re - z.im * z.im;

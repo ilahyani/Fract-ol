@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 18:28:17 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/28 19:12:49 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/28 22:42:07 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ int	ft_zoom(int x, int y, int keycode, t_vars *vars)
 
 	if (keycode == 4)
 	{
-		k = 1.1;
+		k = 1.2;
 		vars->itr += 5;
 	}
 	else
-		k = 0.9;
+		k = 0.8;
 	mouse.re = x / (500 / (vars->max_r - vars->min_r)) + vars->min_r;
 	mouse.im = y / (500 / (vars->max_i - vars->min_i)) + vars->min_i;
 	vars->min_r = mouse.re + (vars->min_r - mouse.re) * k;

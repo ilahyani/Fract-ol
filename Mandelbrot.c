@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 18:47:47 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/04/28 19:09:08 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/04/28 22:45:04 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	m_iterate(t_vars *var)
 	if (i == 200)
 		my_mlx_pixel_put(&var->img, var->pnt.x, var->pnt.y, 0xffffff);
 	else
-		my_mlx_pixel_put(&var->img, var->pnt.x, var->pnt.y, trgb(i, i, i, i));
+		my_mlx_pixel_put(&var->img, var->pnt.x, var->pnt.y, trgb(1, 0, i, i));
 	var->pnt.x++;
 }
 
