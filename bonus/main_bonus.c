@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 	ft_init(&vars);
 	if (argc == 2)
 	{
-		if (!ft_strncmp(argv[1], "-t", 2))
+		if (!ft_strncmp(argv[1], "-t", ft_strlen(argv[1])))
 			draw_multibrot(&vars);
 		else
 			error_message(0);
@@ -47,5 +47,6 @@ int	main(int argc, char **argv)
 		error_message(1);
 	else
 		error_message(2);
+	//Destroy the window the free mlx_ptr
 	return (0);
 }
