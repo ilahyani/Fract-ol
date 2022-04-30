@@ -49,6 +49,6 @@ int	main(int argc, char **argv)
 		error_message(1);
 	else
 		error_message(2);
-	//Destroy the window the free mlx_ptr
+	//Destroy the window and free mlx_ptr
 	return (0);
 }
